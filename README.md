@@ -43,6 +43,6 @@
 ## 🧑‍💻 Desenvolvido por
 
 - Eduarda Cardoso Brandão  
-- Projeto pessoal com foco em arquitetura backend moderna para e-commerce.
+- Projeto pessoal com foco em aplicações modernas na área da saúde.
 
 ---
