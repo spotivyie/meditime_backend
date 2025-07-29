@@ -1,0 +1,12 @@
+export { getAllAppointmentsService } from './allAppointmentsService.js';
+export { getAppointmentByIdService } from './appointmentByIdService.js';
+export { cancelAppointmentService } from './cancelAppointmentService.js';
+export { createAppointmentService } from './createAppointmentService.js';
+export { checkAvailabilityService } from './checkAvailabilityService.js';
+export { getDoctorAgendaService } from './doctorAgendaService.js';
+export { getDoctorsService } from './doctorsService.js';
+export { getMyAppointmentsService } from './myAppointmentsService.js';
+export { getPatientHistoryService } from './patientHistoryService.js';
+export { getPatientsService } from './patientsService.js';
+export { getReportsService } from './reportService.js';
+export { updateAppointmentService } from './updateAppointmentService.js';
