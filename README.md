@@ -40,11 +40,9 @@
 
 ---
 
-## ⚙️ Variáveis de Ambiente (.env)
+## 🧑‍💻 Desenvolvido por
 
-Crie um arquivo `.env` com as seguintes chaves:
+- Eduarda Cardoso Brandão  
+- Projeto pessoal com foco em arquitetura backend moderna para e-commerce.
 
-```env
-MONGO_URI=mongodb+srv://usuario:senha@cluster.mongodb.net/meditime
-JWT_SECRET=sua_chave_secreta
-PORT=0000
+---
