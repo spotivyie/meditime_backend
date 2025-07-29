@@ -44,6 +44,7 @@
 
 Crie um arquivo `.env` com as seguintes chaves:
 
+```env
 MONGO_URI=mongodb+srv://usuario:senha@cluster.mongodb.net/meditime
 JWT_SECRET=sua_chave_secreta
 PORT=0000
