@@ -1,18 +1,23 @@
-const { utcToZonedTime } = await import('date-fns-tz');
+import * as dateFnsTz from 'date-fns-tz';
 import { startOfDay, endOfDay } from 'date-fns';
 import Appointment from '../../models/Appointment.js';
 
-export const checkAvailabilityService = async (doctorId, date, timeZone) => {
+export const checkAvailabilityService = async (doctorId, date, timeZone = 'UTC') => {
   if (!doctorId || !date) throw { status: 400, message: 'doctorId e date são obrigatórios' };
 
-  const zonedDate = utcToZonedTime(date, timeZone);
+  const dateWithTime = `${date}T00:00:00`;
 
-  const startDate = startOfDay(zonedDate);
-  const endDate = endOfDay(zonedDate);
+  const zonedDate = dateFnsTz.toZonedTime(dateWithTime, timeZone);
+
+  const startDateZoned = startOfDay(zonedDate);
+  const endDateZoned = endOfDay(zonedDate);
+
+  const startDateUtc = new Date(startDateZoned.toISOString());
+  const endDateUtc = new Date(endDateZoned.toISOString());
 
   const appointments = await Appointment.find({
     doctor: doctorId,
-    date: { $gte: startDate, $lte: endDate },
+    date: { $gte: startDateUtc, $lte: endDateUtc },
     status: { $ne: 'canceled' },
   }).select('date');
 
@@ -21,7 +26,7 @@ export const checkAvailabilityService = async (doctorId, date, timeZone) => {
   );
 
   const occupied = appointments.map(app => {
-    const zonedAppDate = utcToZonedTime(app.date, timeZone);
+    const zonedAppDate = dateFnsTz.toZonedTime(app.date, timeZone);
     return zonedAppDate.getHours().toString().padStart(2, '0') + ':00';
   });
 
