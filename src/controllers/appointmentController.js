@@ -14,7 +14,8 @@ export const getDoctorAgenda = async (req, res) => {
 export const checkAvailability = async (req, res) => {
   try {
     console.log('query recebida:', req.query);
-    const available = await appointmentService.checkAvailabilityService(req.query.doctorId, req.query.date);
+    const timezone = req.query.timezone || 'UTC';
+    const available = await appointmentService.checkAvailabilityService(req.query.doctorId, req.query.date, timezone);
     res.json(available);
   } catch (error) {
     res.status(error.status || 500).json({ message: error.message || 'Erro ao verificar disponibilidade' });
